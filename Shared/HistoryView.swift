@@ -32,26 +32,90 @@
 
 import SwiftUI
 
-@main
-struct KuchiApp: App {
+struct History: Hashable {
+  let date: Date
+  let challenge: Challenge
+  
+  static func random() -> History {
+    let date = Date.init(timeIntervalSinceNow: -TimeInterval.random(in: 0...1000000))
     
-    let userManager = UserManager()
+    let challenge = ChallengesViewModel.challenges.randomElement()!
     
-    init() {
-        userManager.load()
-    }
-    
-  var body: some Scene {
-    WindowGroup {
-        StarterView()
-            .environmentObject(userManager)
-    }
+    return History(
+      date: date,
+      challenge: challenge
+    )
+  }
+  
+  static func random(count: Int) -> [History] {
+    return (0 ..< count)
+      .map({ _ in self.random() })
+      .sorted(by: { $0.date < $1.date })
   }
 }
 
-struct KuchiApp_Previews: PreviewProvider {
+struct HistoryView: View {
+  let history = History.random(count: 2000)
+  let dateFormatter: DateFormatter = {
+    let formatter = DateFormatter()
+    formatter.dateStyle = .medium
+    formatter.timeStyle = .short
+    return formatter
+  }()
+  
+  var header: some View {
+    Text("History")
+      .foregroundColor(.white)
+      .font(.title)
+      #if os(iOS)
+      .frame(width: UIScreen.main.bounds.width, height: 50)
+      #endif
+      .background(Color.gray)
+  }
+  
+  func getElement(_ element: History) -> some View {
+    VStack(alignment: .center) {
+      Text("\(dateFormatter.string(from: element.date))")
+        .font(.caption2)
+        .foregroundColor(.blue)
+      HStack {
+        VStack {
+          Text("Question:")
+            .font(.caption)
+            .foregroundColor(.gray)
+          Text(element.challenge.question)
+            .font(.body)
+        }
+        
+        VStack {
+          Text("Answer:")
+            .font(.caption)
+            .foregroundColor(.gray)
+          Text(element.challenge.answer)
+            .font(.body)
+        }
+        
+        VStack {
+          Text("Guessed")
+            .font(.caption)
+            .foregroundColor(.gray)
+          Text(element.challenge.succeeded ? "yes" : "no")
+        }
+      }
+    }
+    .padding()
+    #if os(iOS)
+    .frame(width: UIScreen.main.bounds.width)
+    #endif
+  }
+  
+  var body: some View {
+    EmptyView()
+  }
+}
+
+struct HistoryView_Previews: PreviewProvider {
   static var previews: some View {
-      StarterView()
-          .environmentObject(UserManager())
+    HistoryView()
   }
 }
