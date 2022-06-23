@@ -30,6 +30,10 @@
 		A4692BFA2863FD2F00300CAC /* LogoImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4692BF82863FD2F00300CAC /* LogoImage.swift */; };
 		A4692BFC2863FDDD00300CAC /* WelcomeMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4692BFB2863FDDD00300CAC /* WelcomeMessageView.swift */; };
 		A4692BFD2863FDDD00300CAC /* WelcomeMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4692BFB2863FDDD00300CAC /* WelcomeMessageView.swift */; };
+		A4692BFF2863FE8300300CAC /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4692BFE2863FE8300300CAC /* RegisterView.swift */; };
+		A4692C002863FE8300300CAC /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4692BFE2863FE8300300CAC /* RegisterView.swift */; };
+		A4692C022864042600300CAC /* BorderedViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4692C012864042600300CAC /* BorderedViewModifier.swift */; };
+		A4692C032864042600300CAC /* BorderedViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4692C012864042600300CAC /* BorderedViewModifier.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +54,8 @@
 		A4692BF52863FC9A00300CAC /* WelcomeBackgroundImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeBackgroundImage.swift; sourceTree = "<group>"; };
 		A4692BF82863FD2F00300CAC /* LogoImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoImage.swift; sourceTree = "<group>"; };
 		A4692BFB2863FDDD00300CAC /* WelcomeMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeMessageView.swift; sourceTree = "<group>"; };
+		A4692BFE2863FE8300300CAC /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		A4692C012864042600300CAC /* BorderedViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderedViewModifier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +149,7 @@
 			children = (
 				A4692BE72863E3A000300CAC /* WelcomeView.swift */,
 				A4692BEA2863F98300300CAC /* HorizontallyAlignedLabelStyle.swift */,
+				A4692BFE2863FE8300300CAC /* RegisterView.swift */,
 			);
 			path = Welcome;
 			sourceTree = "<group>";
@@ -161,6 +168,7 @@
 				A4692BF52863FC9A00300CAC /* WelcomeBackgroundImage.swift */,
 				A4692BF82863FD2F00300CAC /* LogoImage.swift */,
 				A4692BFB2863FDDD00300CAC /* WelcomeMessageView.swift */,
+				A4692C012864042600300CAC /* BorderedViewModifier.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -268,6 +276,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A4692BFF2863FE8300300CAC /* RegisterView.swift in Sources */,
 				57EF341324E89F92004ABEB2 /* KuchiApp.swift in Sources */,
 				A4692BE82863E3A000300CAC /* WelcomeView.swift in Sources */,
 				A4692BF92863FD2F00300CAC /* LogoImage.swift in Sources */,
@@ -275,6 +284,7 @@
 				A4692BEB2863F98300300CAC /* HorizontallyAlignedLabelStyle.swift in Sources */,
 				57578FDE24E9D943003465A4 /* HomeView.swift in Sources */,
 				A4692BF32863FB9C00300CAC /* KeyboardFollower.swift in Sources */,
+				A4692C022864042600300CAC /* BorderedViewModifier.swift in Sources */,
 				A4692BFC2863FDDD00300CAC /* WelcomeMessageView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -288,6 +298,8 @@
 				57EF341424E89F92004ABEB2 /* KuchiApp.swift in Sources */,
 				A4692BE92863E3A000300CAC /* WelcomeView.swift in Sources */,
 				A4692BEC2863F98300300CAC /* HorizontallyAlignedLabelStyle.swift in Sources */,
+				A4692C032864042600300CAC /* BorderedViewModifier.swift in Sources */,
+				A4692C002863FE8300300CAC /* RegisterView.swift in Sources */,
 				57578FDF24E9D943003465A4 /* HomeView.swift in Sources */,
 				A4692BFD2863FDDD00300CAC /* WelcomeMessageView.swift in Sources */,
 			);
