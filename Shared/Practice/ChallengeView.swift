@@ -38,7 +38,10 @@ struct ChallengeView: View {
     
     @State var showAnswers = false
     @Binding var numberOfAnswered: Int
+    @Environment(\.verticalSizeClass) var verticalSizeClass
+    @Environment(\.questionsPerSession) var questionsPerSession
     
+    @ViewBuilder
     var body: some View {
         //     Stack priority
         //        HStack {
@@ -54,22 +57,43 @@ struct ChallengeView: View {
         //        }
         //        .background(.yellow)
         
-        VStack {
-            Button {
-                self.showAnswers.toggle()
-            } label: {
-                QuestionView(question: challengeTest.challenge.question)
-                    .frame(height: 300)
+        if verticalSizeClass == .compact {
+            VStack {
+                HStack {
+                    Button {
+                        self.showAnswers = !self.showAnswers
+                    } label: {
+                        QuestionView(question: challengeTest.challenge.question)
+                    }
+                    
+                    if showAnswers {
+                        Divider()
+                        ChoicesView(challengeTest: challengeTest)
+                    }
+                }
+                
+                ScoreView(numberOfAnswered: $numberOfAnswered,
+                          numberOfQuestions: questionsPerSession)
             }
-
-            ScoreView(numberOfAnswered: $numberOfAnswered, numberOfQuestions: 5)
-            if showAnswers {
-                Divider()
-                ChoicesView(challengeTest: challengeTest)
-                    .frame(height: 300)
-                    .padding()
+        } else {
+            VStack {
+                Button {
+                    self.showAnswers = !self.showAnswers
+                } label: {
+                    QuestionView(question: challengeTest.challenge.question)
+                        .frame(height: 300)
+                }
+                ScoreView(
+                    numberOfAnswered: $numberOfAnswered,
+                    numberOfQuestions: questionsPerSession
+                )
+                if showAnswers {
+                    Divider()
+                    ChoicesView(challengeTest: challengeTest)
+                        .frame(height: 300)
+                        .padding()
+                }
             }
-            
         }
     }
 }
