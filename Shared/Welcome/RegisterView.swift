@@ -50,12 +50,8 @@ import SwiftUI
 struct RegisterView: View {
     
     @EnvironmentObject var userManager: UserManager
-    @ObservedObject var keyboardHandler: KeyboardFollower
-    
-    init(keyboardHandler: KeyboardFollower) {
-        self.keyboardHandler = keyboardHandler
-    }
-    
+    @StateObject var keyboardHandler = KeyboardFollower()
+        
     var body: some View {
         VStack {
             Spacer()
