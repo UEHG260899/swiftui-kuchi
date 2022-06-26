@@ -17,6 +17,8 @@
 		57578FE924E9D943003465A4 /* jp.json in Resources */ = {isa = PBXBuildFile; fileRef = 57578FAF24E9D943003465A4 /* jp.json */; };
 		57EF341324E89F92004ABEB2 /* KuchiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EF340024E89F91004ABEB2 /* KuchiApp.swift */; };
 		57EF341424E89F92004ABEB2 /* KuchiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EF340024E89F91004ABEB2 /* KuchiApp.swift */; };
+		A4019C5C286671860031CB18 /* ScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4019C5B286671860031CB18 /* ScoreView.swift */; };
+		A4019C5D286671860031CB18 /* ScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4019C5B286671860031CB18 /* ScoreView.swift */; };
 		A4692BE82863E3A000300CAC /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4692BE72863E3A000300CAC /* WelcomeView.swift */; };
 		A4692BE92863E3A000300CAC /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4692BE72863E3A000300CAC /* WelcomeView.swift */; };
 		A4692BEB2863F98300300CAC /* HorizontallyAlignedLabelStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4692BEA2863F98300300CAC /* HorizontallyAlignedLabelStyle.swift */; };
@@ -69,6 +71,7 @@
 		57EF340F24E89F92004ABEB2 /* Kuchi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kuchi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		57EF341124E89F92004ABEB2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		57EF341224E89F92004ABEB2 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
+		A4019C5B286671860031CB18 /* ScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreView.swift; sourceTree = "<group>"; };
 		A4692BE72863E3A000300CAC /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		A4692BEA2863F98300300CAC /* HorizontallyAlignedLabelStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontallyAlignedLabelStyle.swift; sourceTree = "<group>"; };
 		A4692BF22863FB9C00300CAC /* KeyboardFollower.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardFollower.swift; sourceTree = "<group>"; };
@@ -229,6 +232,7 @@
 				A4EC742F2864D55300FFECE8 /* PracticeView.swift */,
 				A4EC74302864D55300FFECE8 /* ChallengeView.swift */,
 				A4EC74312864D55300FFECE8 /* ChoicesRow.swift */,
+				A4019C5B286671860031CB18 /* ScoreView.swift */,
 			);
 			path = Practice;
 			sourceTree = "<group>";
@@ -334,6 +338,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A4019C5C286671860031CB18 /* ScoreView.swift in Sources */,
 				A4692BFF2863FE8300300CAC /* RegisterView.swift in Sources */,
 				A4EC74262864B88800FFECE8 /* Profile.swift in Sources */,
 				A4EC743C2864D55300FFECE8 /* ChallengeView.swift in Sources */,
@@ -370,6 +375,7 @@
 				A4692BE92863E3A000300CAC /* WelcomeView.swift in Sources */,
 				A4692BEC2863F98300300CAC /* HorizontallyAlignedLabelStyle.swift in Sources */,
 				A4692C032864042600300CAC /* BorderedViewModifier.swift in Sources */,
+				A4019C5D286671860031CB18 /* ScoreView.swift in Sources */,
 				A4EC74452864D56E00FFECE8 /* HistoryView.swift in Sources */,
 				A4EC74392864D55300FFECE8 /* ChallengesViewModel.swift in Sources */,
 				A4EC74292864B88800FFECE8 /* Settings.swift in Sources */,
