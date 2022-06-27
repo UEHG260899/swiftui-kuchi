@@ -36,7 +36,7 @@ import SwiftUI
 struct KuchiApp: App {
     
     let userManager = UserManager()
-    
+    @AppStorage("appearance") var appereance: Appearance = .automatic
     init() {
         userManager.load()
     }
@@ -46,6 +46,7 @@ struct KuchiApp: App {
         StarterView()
             .environmentObject(userManager)
             .environmentObject(ChallengesViewModel())
+            .preferredColorScheme(appereance.getColorScheme())
     }
   }
 }
