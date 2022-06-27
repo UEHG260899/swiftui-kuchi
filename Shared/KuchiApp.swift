@@ -43,18 +43,17 @@ struct KuchiApp: App {
     
   var body: some Scene {
     WindowGroup {
-//        StarterView()
-//            .environmentObject(userManager)
-//            .environmentObject(ChallengesViewModel())
-        SettingsView()
+        StarterView()
+            .environmentObject(userManager)
+            .environmentObject(ChallengesViewModel())
     }
   }
 }
 
 struct KuchiApp_Previews: PreviewProvider {
   static var previews: some View {
-//      StarterView()
-//          .environmentObject(UserManager())
-      SettingsView()
+      StarterView()
+          .environmentObject(UserManager())
+          .environmentObject(ChallengesViewModel())
   }
 }

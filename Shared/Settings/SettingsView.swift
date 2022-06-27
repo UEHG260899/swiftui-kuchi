@@ -34,7 +34,7 @@ import SwiftUI
 
 struct SettingsView: View {
     
-    @State var numberOfQuestions = 6
+    @AppStorage("numberOfQuestions") var numberOfQuestions = 6
     @State var appearance: Appearance = .automatic
     @State var learningEnabled = true
     @State var dailyReminderEnabled = false
