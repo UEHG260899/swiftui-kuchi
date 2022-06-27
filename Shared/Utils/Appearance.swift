@@ -32,29 +32,25 @@
 
 import SwiftUI
 
-@main
-struct KuchiApp: App {
-    
-    let userManager = UserManager()
-    
-    init() {
-        userManager.load()
+enum Appearance: Int, CaseIterable, Identifiable {
+  case light, dark, automatic
+  
+  var id: Int { self.rawValue }
+  
+  var name: String {
+    switch self {
+    case .light: return "Light"
+    case .dark: return "Dark"
+    case .automatic: return "Automatic"
     }
-    
-  var body: some Scene {
-    WindowGroup {
-//        StarterView()
-//            .environmentObject(userManager)
-//            .environmentObject(ChallengesViewModel())
-        SettingsView()
+  }
+  
+  func getColorScheme() -> ColorScheme? {
+    switch self {
+    case .automatic: return nil
+    case .light: return .light
+    case .dark: return .dark
     }
   }
 }
 
-struct KuchiApp_Previews: PreviewProvider {
-  static var previews: some View {
-//      StarterView()
-//          .environmentObject(UserManager())
-      SettingsView()
-  }
-}
