@@ -34,17 +34,48 @@ import SwiftUI
 
 struct CardView: View {
     
+    
+    typealias CardDrag = (_ card: FlashCard, _ direction: DiscardedDirection) -> Void
+    
     @Binding var cardColor: Color
     @State var revealed = false
+    @State var offset: CGSize = .zero
+    @GestureState var isLongPressed = false
     let flashCard: FlashCard
+    let dragged: CardDrag
     
-    init(_ card: FlashCard, cardColor: Binding<Color>) {
+    init(_ card: FlashCard,
+         cardColor: Binding<Color>,
+         onDrag dragged: @escaping CardDrag = {_, _ in}) {
         self.flashCard = card
         self._cardColor = cardColor
+        self.dragged = dragged
     }
     
     var body: some View {
-        ZStack {
+        
+        
+        let drag = DragGesture()
+            .onChanged { self.offset = $0.translation }
+            .onEnded {
+                if $0.translation.width < -100 {
+                    self.offset = .init(width: -1000, height: 0)
+                    self.dragged(self.flashCard, .left)
+                } else if $0.translation.width > 100 {
+                    self.offset = .init(width: 1000, height: 0)
+                    self.dragged(self.flashCard, .right)
+                } else {
+                    self.offset = .zero
+                }
+            }
+        
+        let longPress = LongPressGesture()
+            .updating($isLongPressed) { value, state, transition in
+                state = value
+            }
+            .simultaneously(with: drag)
+        
+        return ZStack {
             Rectangle()
                 .fill(cardColor)
                 .frame(width: 320, height: 210)
@@ -65,7 +96,10 @@ struct CardView: View {
         .shadow(radius: 8)
         .frame(width: 320, height: 210)
         .animation(.spring(), value: 1.0)
-        .gesture(
+        .offset(self.offset)
+        .gesture(longPress)
+        .scaleEffect(isLongPressed ? 1.1 : 1)
+        .simultaneousGesture(
             TapGesture()
                 .onEnded({ _ in
                     withAnimation(.easeIn) {

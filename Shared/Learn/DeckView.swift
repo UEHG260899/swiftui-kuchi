@@ -32,6 +32,11 @@
 
 import SwiftUI
 
+enum DiscardedDirection {
+    case left
+    case right
+}
+
 struct DeckView: View {
     
     @ObservedObject var deck: FlashDeck
@@ -56,7 +61,7 @@ struct DeckView: View {
 extension DeckView {
     func getCardView(for card: FlashCard) -> CardView {
         let activeCards = deck.cards.filter { $0.isActive == true }
-
+        
         if let lastCard = activeCards.last {
             if lastCard == card {
                 return createCardView(for: card)
@@ -71,7 +76,11 @@ extension DeckView {
         let view = CardView(card, cardColor: Binding(
             get: { Color(rgba: cardBackgroundColorInt) }, set: { newValue in
                 cardBackgroundColorInt = newValue.asRgba
-            }))
+            })) { card, direction in
+                if direction == .left {
+                    self.onMemorized()
+                }
+            }
         return view
     }
 }
