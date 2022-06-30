@@ -52,6 +52,16 @@ struct CardView: View {
         self.dragged = dragged
     }
     
+    func discardCard(to direction: DiscardedDirection) {
+      let width: CGFloat
+      switch direction {
+      case .left: width = -1000
+      case .right: width = 1000
+      }
+      offset = .init(width: width, height: 0)
+      dragged(flashCard, direction)
+    }
+    
     var body: some View {
         
         
@@ -75,38 +85,59 @@ struct CardView: View {
             }
             .simultaneously(with: drag)
         
-        return ZStack {
-            Rectangle()
-                .fill(cardColor)
-                .frame(width: 320, height: 210)
-                .cornerRadius(12)
-            VStack {
-                Spacer()
-                Text(flashCard.card.question)
-                    .font(.largeTitle)
-                    .foregroundColor(.white)
-                if revealed {
-                    Text(flashCard.card.answer)
-                        .font(.caption)
+        return VStack {
+            ZStack {
+                Rectangle()
+                    .fill(cardColor)
+                    .frame(width: 320, height: 210)
+                    .cornerRadius(12)
+                VStack {
+                    Spacer()
+                    Text(flashCard.card.question)
+                        .font(.largeTitle)
                         .foregroundColor(.white)
+                    if revealed {
+                        Text(flashCard.card.answer)
+                            .font(.caption)
+                            .foregroundColor(.white)
+                    }
+                    Spacer()
+                }
+            }
+            .shadow(radius: 8)
+            .frame(width: 320, height: 210)
+            .animation(.spring(), value: 1.0)
+            .gesture(longPress)
+            .scaleEffect(isLongPressed ? 1.1 : 1)
+            .simultaneousGesture(
+                TapGesture()
+                    .onEnded({ _ in
+                        withAnimation(.easeIn) {
+                            self.revealed = !self.revealed
+                        }
+                    })
+            )
+            
+            HStack {
+                Button {
+                    discardCard(to: .left)
+                } label: {
+                    Image(systemName: "arrowshape.turn.up.left.circle")
+                        .accessibilityLabel(Text("Swipes right"))
                 }
                 Spacer()
+                Button {
+                    discardCard(to: .right)
+                } label: {
+                    Image(systemName: "arrowshape.turn.up.right.circle")
+                        .accessibilityLabel(Text("Swipes right"))
+                }
+
             }
+            .padding(45)
+            .font(.largeTitle)
         }
-        .shadow(radius: 8)
-        .frame(width: 320, height: 210)
-        .animation(.spring(), value: 1.0)
         .offset(self.offset)
-        .gesture(longPress)
-        .scaleEffect(isLongPressed ? 1.1 : 1)
-        .simultaneousGesture(
-            TapGesture()
-                .onEnded({ _ in
-                    withAnimation(.easeIn) {
-                        self.revealed = !self.revealed
-                    }
-                })
-        )
         
     }
 }
